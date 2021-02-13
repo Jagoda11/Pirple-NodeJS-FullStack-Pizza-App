@@ -22,4 +22,23 @@ const createHash = function (str) {
   }
 };
 
-module.exports = { log, createHash };
+// Create a string of random alphanumeric characters, of a given length
+const createRandomString = function (strLength) {
+  // Define all the possible characters that could go into a string
+  const possibleCharacters = "abcdefghijklmnopqrstuvwxyz0123456789";
+
+  // Start the final string
+  let str = "";
+  for (i = 1; i <= strLength; i++) {
+    // Get a random character from the possibleCharacters string
+    const randomCharacter = possibleCharacters.charAt(
+      Math.floor(Math.random() * possibleCharacters.length)
+    );
+    // Append this character to the string
+    str += randomCharacter;
+  }
+
+  return str;
+};
+
+module.exports = { log, createHash, createRandomString };

@@ -1,9 +1,17 @@
-const { v4: uuidv4 } = require("uuid");
 const utils = require("./utils");
-const usersDb = require("./users.db");
-const tokensDb = require("./tokens.db");
+const { v4: uuidv4 } = require("uuid");
 
 /**handle all request that are coming for users api */
+const allUsers = [
+  {
+    name: "Dude",
+    hashedPassword:
+      "9946dad4e00e913fc8be8e5d3f7e110a4a9e832f83fb09c345285d78638d8a0e",
+    email: "dude345@hotmail.com",
+    street_address: "Stockholm",
+    id: "c7b6ee79-c89b-4e07-97e2-27cbcecfc072",
+  },
+];
 
 function validateUser(user) {
   return (
@@ -23,7 +31,6 @@ function serverHandler(req, res) {
   //   return;
   // }
 
-  // ##########################################
   // POST /users : add a user to the list
   if (req.method === "POST" && req.url === "/users") {
     function bodyHandler(body) {
@@ -32,7 +39,7 @@ function serverHandler(req, res) {
         userBody.id = uuidv4();
         userBody.hashedPassword = utils.createHash(userBody.password); // store the hashed version of the password
         delete userBody.password; // remove the original password
-        usersDb.addUser(userBody);
+        allUsers.push(userBody);
         res.write(userBody.id);
         res.end();
       } else {
@@ -42,19 +49,18 @@ function serverHandler(req, res) {
       }
     }
 
-    readBody(req, bodyHandler);
+    readBody(req, res, bodyHandler);
 
     utils.log("after readBody");
     return;
   }
 
-  // ##########################################
   // PUT /users/:id : modify a user by id
   // match against (t.ex): /users/c7b6ee79-c89b-4e07-97e2-27cbcecfc072
   const regMatch = req.url.match(/^\/users\/([0-9a-f-]{36})$/i);
   if (req.method === "PUT" && regMatch) {
     const id = regMatch[1];
-    const userIndex = usersDb.getUsers().findIndex((user) => {
+    const userIndex = allUsers.findIndex((user) => {
       return user.id === id;
     });
 
@@ -67,13 +73,14 @@ function serverHandler(req, res) {
     }
 
     // if the user is found
-    readBody(req, (body) => {
+    readBody(req, res, (body) => {
       const newUser = JSON.parse(body);
       if (validateUser(newUser)) {
         newUser.id = id;
         newUser.hashedPassword = utils.createHash(newUser.password); // store the hashed version of the password
         delete newUser.password; // remove the original password
-        usersDb.updateByIndex(userIndex, newUser);
+
+        allUsers[userIndex] = newUser;
         res.write(id);
         res.end();
       } else {
@@ -85,11 +92,10 @@ function serverHandler(req, res) {
     return;
   }
 
-  // ##########################################
   // DELETE /users/:id : delete a user by id
   if (req.method === "DELETE" && regMatch) {
     const id = regMatch[1];
-    const userIndex = usersDb.getUsers().findIndex((user) => {
+    const userIndex = allUsers.findIndex((user) => {
       return user.id === id;
     });
 
@@ -102,43 +108,7 @@ function serverHandler(req, res) {
     }
 
     // if the user is found
-    usersDb.removeByIndex(userIndex);
-    res.end();
-    return;
-  }
-
-  // ##########################################
-  // POST /users/login : login
-  if (req.method == "POST" && req.url === "/users/login") {
-    readBody(req, (body) => {
-      const loginData = JSON.parse(body);
-      const hashedPassword = utils.createHash(loginData.password);
-      const loggedInUser = usersDb.loginUser(loginData.email, hashedPassword);
-      //if the email or password is wrong
-      if (loggedInUser === undefined) {
-        res.statusCode = 401;
-        res.write("unauthorized");
-        res.end();
-        return;
-      }
-
-      //if email and password is correct
-      const tokenId = utils.createRandomString(30);
-      const token = { email: loggedInUser.email, creationDate: new Date() };
-      tokensDb.addToken(tokenId, token);
-      res.write(tokenId);
-      res.end();
-      return;
-    });
-    return;
-  }
-
-  // ##########################################
-  // POST /users/logout : logout
-
-  if (req.method == "POST" && req.url === "/users/logout") {
-    const token = req.headers.authorization;
-    tokensDb.removeToken(token);
+    allUsers.splice(userIndex, 1);
     res.end();
     return;
   }
@@ -148,7 +118,7 @@ function serverHandler(req, res) {
   res.end();
 }
 
-function readBody(req, callback) {
+function readBody(req, res, callback) {
   utils.log("readBody first line");
   let body = [];
 

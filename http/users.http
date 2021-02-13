@@ -1,0 +1,37 @@
+### Create user
+POST http://localhost:3000/users HTTP/1.1
+content-type: application/json
+
+{
+    "name": "John",
+    "email": "john@google.com",
+    "street_address": "google",
+    "password": "gooogle"
+}
+
+
+### Update user
+PUT http://localhost:3000/users/c7b6ee79-c89b-4e07-97e2-27cbcecfc072 HTTP/1.1
+content-type: application/json
+
+{
+    "name": "Dude",
+    "password": "a new password",
+    "email": "dude345@hotmail.com",
+    "street_address": "Sollentuna"
+}
+
+### Login user
+POST http://localhost:3000/users/login HTTP/1.1
+content-type: application/json
+
+{
+    "email": "dude345@hotmail.com",
+    "password": "gooogle"
+}
+
+
+### Logout user
+POST http://localhost:3000/users/logout HTTP/1.1
+content-type: application/json
+Authorization: n893jb0ukcqcbt6crb1xi6qinb4w71

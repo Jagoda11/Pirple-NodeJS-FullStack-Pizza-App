@@ -2,7 +2,7 @@ const allUsers = [
   {
     name: "Dude",
     hashedPassword:
-      "9946dad4e00e913fc8be8e5d3f7e110a4a9e832f83fb09c345285d78638d8a0e",
+      "5513f9608ffe88722143cd30af4b633b1a7b3bc69ebe0e6490b7d26ebf6f27d6",
     email: "dude345@hotmail.com",
     street_address: "Stockholm",
     id: "c7b6ee79-c89b-4e07-97e2-27cbcecfc072",
@@ -25,4 +25,11 @@ function removeByIndex(index) {
   allUsers.splice(index, 1);
 }
 
-module.exports = { getUsers, addUser, updateByIndex, removeByIndex };
+function loginUser(email, password) {
+  const user = allUsers.find((user) => {
+    return user.email === email && user.hashedPassword === password;
+  });
+  return user;
+}
+
+module.exports = { getUsers, addUser, updateByIndex, removeByIndex, loginUser };
