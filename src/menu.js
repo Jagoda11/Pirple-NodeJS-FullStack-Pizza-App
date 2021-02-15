@@ -1,27 +1,5 @@
 const tokensDb = require("./tokens.db");
-
-const menuItems = [
-  {
-    id: 1,
-    name: "pasta",
-    price: 100,
-  },
-  {
-    id: 2,
-    name: "sushi",
-    price: 120,
-  },
-  {
-    id: 3,
-    name: "cake",
-    price: 50,
-  },
-  {
-    id: 4,
-    name: "coffee",
-    price: 45,
-  },
-];
+const menuDb = require("./menu.db");
 
 function validateUserLogin(req, res) {
   const token = req.headers.authorization;
@@ -43,7 +21,7 @@ function serverHandler(req, res) {
     }
 
     res.setHeader("Content-Type", "application/json");
-    res.write(JSON.stringify(menuItems));
+    res.write(JSON.stringify(menuDb.getItems()));
     res.end();
     return;
   }

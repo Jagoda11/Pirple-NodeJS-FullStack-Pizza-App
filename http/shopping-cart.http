@@ -1,0 +1,17 @@
+### Get the menu items
+Post http://localhost:3000/shopping-cart/add HTTP/1.1
+content-type: application/json
+Authorization: oxl8yp8174vw45bth1z2n2238dtyar
+
+{
+    "itemId": 2
+}
+
+### Login user
+POST http://localhost:3000/users/login HTTP/1.1
+content-type: application/json
+
+{
+    "email": "dude345@hotmail.com",
+    "password": "gooogle"
+}

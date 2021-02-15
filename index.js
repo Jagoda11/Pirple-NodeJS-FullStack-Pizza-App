@@ -2,6 +2,7 @@ const http = require("http");
 const utils = require("./src/utils");
 const users = require("./src/users");
 const menu = require("./src/menu");
+const shoppingCart = require("./src/shopping-cart")
 
 function serverHandler(req, res) {
   utils.log(`${req.method} ${req.url}`);
@@ -15,10 +16,14 @@ function serverHandler(req, res) {
   }
 
   if(req.url.startsWith("/menu")){
-    // TODO: check that the user is logged in 
     menu.serverHandler(req, res);
     return;
   }
+
+  if(req.url.startsWith("/shopping-cart")){
+    shoppingCart.serverHandler(req, res);
+    return;
+  }  
 
   res.statusCode = 404;
   res.write("Not found");
