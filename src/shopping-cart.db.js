@@ -53,4 +53,8 @@ function getCart(email) {
   return allItems[email];
 }
 
-module.exports = { addItemToCart: addItemToCart, getCart: getCart };
+function clearShoppingCart(email) {
+  delete allItems[email];
+}
+
+module.exports = { addItemToCart, getCart, clearShoppingCart };
