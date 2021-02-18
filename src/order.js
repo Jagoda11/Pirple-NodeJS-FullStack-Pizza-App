@@ -81,7 +81,7 @@ function serverHandler(req, res) {
         shoppingCartDb.clearShoppingCart(token.email);
         res.write("order placed :)");
         res.end();
-      }); //TODO
+      });
     });
 
     return;
