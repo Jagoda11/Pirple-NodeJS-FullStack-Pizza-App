@@ -12,6 +12,7 @@
   "license": "ISC",
   "dependencies": {
     "axios": "^0.21.1",
+    "mailgun-js": "^0.22.0",
     "stripe": "^8.135.0",
     "uuid": "^8.3.2"
   }

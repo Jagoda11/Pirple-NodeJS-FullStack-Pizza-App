@@ -4,12 +4,13 @@
 // 4. charge the amount of the shopping cart with stripe ✅
 // 5. clear the shopping cart ✅
 // 6. create an orders.db which will store the order of the user ✅
-// 7. send a mail to the user
+// 7. send a mail to the user ✅
 
 const tokensDb = require("./tokens.db");
 const shoppingCartDb = require("./shopping-cart.db");
 const stripe = require("./stripe");
 const ordersDb = require("./orders.db");
+const mail = require("./mail");
 
 function validateUserLogin(req, res) {
   const token = req.headers.authorization;
@@ -77,7 +78,13 @@ function serverHandler(req, res) {
         }
 
         ordersDb.createOrder({ email: token.email, cart });
-
+        // send mail with receipt
+        mail.send(
+          token.email,
+          "Order Receipt",
+          "Your order has bean placed, you have been charged with the amount " +
+            amount
+        );
         shoppingCartDb.clearShoppingCart(token.email);
         res.write("order placed :)");
         res.end();

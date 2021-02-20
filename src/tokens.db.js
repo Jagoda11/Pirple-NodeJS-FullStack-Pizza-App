@@ -21,8 +21,8 @@ function getToken(id) {
 }
 
 module.exports = {
-  addToken: addToken,
-  removeToken: removeToken,
-  tokenExists: tokenExists,
-  getToken: getToken,
+  addToken,
+  removeToken,
+  tokenExists,
+  getToken,
 };

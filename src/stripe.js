@@ -1,13 +1,11 @@
 const http = require("https");
-
-const API_KEY =
-  "sk_test_51IMGJKCVp1dLjTLZNDNq8btUX0l6GZvfxyJOTuvrDFz0RiZbUg4PrOZ1u3mCdCkNOpxxx7ckdMNUlZe5SPidGYpd00PqtRKawe:";
+const config = require("./config");
 
 function charge(amount, cardNumber, callback) {
   const options = {
     host: "api.stripe.com",
     path: "/v1/charges",
-    auth: API_KEY,
+    auth: config.stripe.apiKey,
   };
 
   const req = http.request(options, (response) => {

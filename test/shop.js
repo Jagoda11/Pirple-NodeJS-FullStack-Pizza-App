@@ -1,13 +1,16 @@
 const axios = require("axios");
 
 const URL = "http://localhost:3000";
+const TEST_EMAIL = "vigiho5448@trejni.com";
+const TEST_PASSWORD = "gooogle";
 
 async function login() {
+  console.log("Login...");
   const result = await axios.post(
     URL + "/users/login",
     JSON.stringify({
-      email: "dude345@hotmail.com",
-      password: "gooogle",
+      email: TEST_EMAIL,
+      password: TEST_PASSWORD,
     })
   );
 
@@ -16,6 +19,7 @@ async function login() {
 }
 
 async function shop(token, itemId) {
+  console.log("Shop...");
   const result = await axios.post(
     URL + "/shopping-cart/add",
     JSON.stringify({ itemId }),
@@ -28,6 +32,7 @@ async function shop(token, itemId) {
 }
 
 async function checkout(token) {
+  console.log("Checkout...");
   try {
     const result = await axios.post(
       URL + "/order/checkout",
@@ -48,6 +53,7 @@ async function run() {
   const token = await login();
 
   await shop(token, 2);
+  await shop(token, 3);
   const shoppingCart = await shop(token, 2);
   console.log(shoppingCart);
   await checkout(token);
