@@ -1,5 +1,57 @@
 Homework Assignment #2
 
+### User login
+
+#### POST /users/login
+
+`body: {email: String, password: String}`
+
+### User logout
+
+#### POST /users/logout
+
+`header: authorization`
+
+### Add user
+
+#### POST /users
+
+`body: {email: String, name: String, password: String, street_address: String}`
+
+### Update user
+
+#### PUT /users/:id
+
+`param: id`
+
+`body: {email: String, name: String, password: String, street_address: String}`
+
+### Delete user
+
+#### DELETE /users/:id
+
+`param: id`
+
+### Get menu items
+
+#### GET /menu
+
+`header: authorization`
+
+### Add item to the shopping cart
+
+#### POST /shopping-cart/add
+
+`header: authorization`
+`body: {itemId: String}`
+
+### checkout an order
+
+#### POST /order/checkout
+
+`header: authorization`
+`body: {cardNumber: String}`
+
 Details (Scenario):
 
 You are building the API for a pizza-delivery company. Don't worry about a frontend, just build the API. Here's the spec from your project manager:

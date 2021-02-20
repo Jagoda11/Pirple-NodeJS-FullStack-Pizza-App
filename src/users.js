@@ -37,7 +37,9 @@ function serverHandler(req, res) {
         res.end();
       } else {
         res.statusCode = 409;
-        res.write("User must contain: name, email and street_address");
+        res.write(
+          "User must contain: name, password, email and street_address"
+        );
         res.end();
       }
     }

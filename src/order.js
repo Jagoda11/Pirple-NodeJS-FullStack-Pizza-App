@@ -67,7 +67,7 @@ function serverHandler(req, res) {
       const amount = cart
         .map((item) => item.totalPrice)
         .reduce((a, b) => a + b, 0);
-      stripe.charge(amount, cardDetails.number, (paymentSucceeded) => {
+      stripe.charge(amount, cardDetails.cardNumber, (paymentSucceeded) => {
         console.log("paymentSucceeded: " + paymentSucceeded);
 
         if (!paymentSucceeded) {
