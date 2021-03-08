@@ -4,6 +4,11 @@
 // }
 const allTokens = new Map();
 
+allTokens.set('dbbcb943-5bff-45a8-86e7-665bdd22eb25', {
+  name: 'Vigiho',
+  email: 'vigiho5448@trejni.com',
+});
+
 function addToken(id, token) {
   allTokens.set(id, token);
 }
