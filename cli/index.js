@@ -1,4 +1,3 @@
-// Dependencies
 const server = require('../server');
 const responders = require('./responders');
 const cli = require('./cli');
@@ -19,8 +18,7 @@ app.init = function () {
   }, 50);
 };
 
-// Self executing
+// executing
 app.init();
 
-// Export the app
 module.exports = app;

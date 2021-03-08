@@ -1,4 +1,3 @@
-// Dependencies
 const readline = require('readline');
 const util = require('util');
 const debug = util.debuglog('cli');
@@ -38,8 +37,8 @@ cli.processInput = function (str) {
     ];
 
     // Go through the possible inputs, emit event when a match is found
-    const matchFound = false;
-    const counter = 0;
+    let matchFound = false;
+    let counter = 0;
     uniqueInputs.some(function (input) {
       if (str.toLowerCase().indexOf(input) > -1) {
         matchFound = true;
@@ -86,5 +85,4 @@ cli.init = function () {
   });
 };
 
-// Export the module
 module.exports = cli;
