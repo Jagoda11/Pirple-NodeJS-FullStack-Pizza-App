@@ -1,7 +1,6 @@
-const cli = require('./cli');
+const api = require('./api');
 
-module.exports = function () {
-  cli.responders.listUsers = function () {
-    process.listUsers(1);
-  };
+module.exports = async function (command) {
+  const users = await api.listUsers();
+  console.log(users);
 };

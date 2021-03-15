@@ -1,11 +1,3 @@
-// 1. user will POST /order/checkout ✅
-// 2. verify that the user is logged in ✅
-// 3. verify that the user has something in the shopping cart ✅
-// 4. charge the amount of the shopping cart with stripe ✅
-// 5. clear the shopping cart ✅
-// 6. create an orders.db which will store the order of the user ✅
-// 7. send a mail to the user ✅
-
 const tokensDb = require('./tokens.db');
 const shoppingCartDb = require('./shopping-cart.db');
 const stripe = require('./stripe');

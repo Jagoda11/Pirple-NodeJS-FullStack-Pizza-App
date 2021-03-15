@@ -14,6 +14,9 @@ function validateUser(user) {
   );
 }
 
+const isRecentUser = (user) =>
+  new Date() - user.timestamp < 1000 * 60 * 60 * 24;
+
 function serverHandler(req, res) {
   // // GET /users : return the list of users
   // if (req.method === "GET" && req.url === "/users") {
@@ -48,6 +51,23 @@ function serverHandler(req, res) {
     readBody(req, bodyHandler);
 
     utils.log('after readBody');
+    return;
+  }
+
+  // get recent users
+  if (req.method === 'GET' && req.url === '/users/list') {
+    const token = tokensDb.getToken(req.headers.authorization);
+    if (token.admin !== true) {
+      res.statusCode = 401;
+      res.write('forbidden');
+      res.end();
+      return;
+    }
+    const users = usersDb.getUsers();
+    const recentUsers = users.filter(isRecentUser);
+    res.setHeader('Content-Type', 'application/json');
+    res.write(JSON.stringify(recentUsers));
+    res.end();
     return;
   }
 

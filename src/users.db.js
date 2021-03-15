@@ -1,12 +1,13 @@
 const allUsers = [
   {
     // user for testing purposes
-    name: "Vigiho",
+    name: 'Vigiho',
     hashedPassword:
-      "5513f9608ffe88722143cd30af4b633b1a7b3bc69ebe0e6490b7d26ebf6f27d6",
-    email: "vigiho5448@trejni.com",
-    street_address: "Stockholm",
-    id: "c7b6ee79-c89b-4e07-97e2-27cbcecfc072",
+      '5513f9608ffe88722143cd30af4b633b1a7b3bc69ebe0e6490b7d26ebf6f27d6',
+    email: 'vigiho5448@trejni.com',
+    street_address: 'Stockholm',
+    id: 'c7b6ee79-c89b-4e07-97e2-27cbcecfc072',
+    timestamp: new Date(),
   },
 ];
 

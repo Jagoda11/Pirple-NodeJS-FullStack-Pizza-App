@@ -20,6 +20,14 @@ async function listOrders() {
   });
   return result.data;
 }
+async function listUsers() {
+  const result = await axios.get(API_URL + '/users/list', {
+    headers: {
+      authorization: config.apiToken,
+    },
+  });
+  return result.data;
+}
 
 async function getOrderById(orderId) {
   const result = await axios.get(API_URL + '/order/' + orderId, {
@@ -30,7 +38,7 @@ async function getOrderById(orderId) {
   return result.data;
 }
 
-module.exports = { getMenu, listOrders, getOrderById };
+module.exports = { getMenu, listOrders, getOrderById, listUsers };
 /* 
 export async function login(email, password) {
   const result = await axios.post(API_URL + '/users/login', {
