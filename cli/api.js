@@ -12,7 +12,25 @@ async function getMenu() {
   return result.data;
 }
 
-module.exports = { getMenu };
+async function listOrders() {
+  const result = await axios.get(API_URL + '/orders', {
+    headers: {
+      authorization: config.apiToken,
+    },
+  });
+  return result.data;
+}
+
+async function getOrderById(orderId) {
+  const result = await axios.get(API_URL + '/order/' + orderId, {
+    headers: {
+      authorization: config.apiToken,
+    },
+  });
+  return result.data;
+}
+
+module.exports = { getMenu, listOrders, getOrderById };
 /* 
 export async function login(email, password) {
   const result = await axios.post(API_URL + '/users/login', {

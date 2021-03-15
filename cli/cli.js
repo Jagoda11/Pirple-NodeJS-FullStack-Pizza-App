@@ -13,6 +13,24 @@ e.on('list menu', function (str) {
   cli.responders.getMenuItems();
 });
 
+e.on('list orders', function (str) {
+  cli.responders.listOrders();
+});
+
+e.on('get order', function (str) {
+  cli.responders.getOrderById(str);
+});
+
+//adding help for practice ..remove the file after
+e.on('help', function (str) {
+  cli.responders.help();
+});
+
+//adding stats for practice ..remove the file after
+e.on('list users', function (str) {
+  cli.responders.listUsers(str);
+});
+
 // Instantiate the cli module object
 const cli = { responders: {} };
 
@@ -29,6 +47,8 @@ cli.processInput = function (str) {
       'stats',
       'list menu',
       'list users',
+      'list orders',
+      'get order',
       'more user info',
       'list checks',
       'more check info',
