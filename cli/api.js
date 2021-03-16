@@ -38,7 +38,22 @@ async function getOrderById(orderId) {
   return result.data;
 }
 
-module.exports = { getMenu, listOrders, getOrderById, listUsers };
+async function getUserByEmail(email) {
+  const result = await axios.get(API_URL + '/user/' + email, {
+    headers: {
+      authorization: config.apiToken,
+    },
+  });
+  return result.data;
+}
+
+module.exports = {
+  getMenu,
+  listOrders,
+  getOrderById,
+  listUsers,
+  getUserByEmail,
+};
 /* 
 export async function login(email, password) {
   const result = await axios.post(API_URL + '/users/login', {

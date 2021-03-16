@@ -15,6 +15,12 @@ function getUsers() {
   return allUsers;
 }
 
+function getUserByEmail(user) {
+  return allUsers.find((email) => {
+    return user.email === email;
+  });
+}
+
 function addUser(user) {
   allUsers.push(user);
 }
@@ -34,4 +40,11 @@ function loginUser(email, password) {
   return user;
 }
 
-module.exports = { getUsers, addUser, updateByIndex, removeByIndex, loginUser };
+module.exports = {
+  getUsers,
+  addUser,
+  updateByIndex,
+  removeByIndex,
+  loginUser,
+  getUserByEmail,
+};

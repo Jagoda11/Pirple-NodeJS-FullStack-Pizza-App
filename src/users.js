@@ -71,6 +71,25 @@ function serverHandler(req, res) {
     return;
   }
 
+  //get user by email
+  const reggMatch = req.url.match(/^\/user\/([^\/]+)$/i);
+  if (req.method === 'GET' && reggMatch) {
+    const token = tokensDb.getToken(req.headers.authorization);
+    if (token.admin !== true) {
+      res.statusCode = 401;
+      res.write('forbidden');
+      res.end();
+      return;
+    }
+
+    const userEmail = reggMatch[1];
+    const user = usersDb.getUserByEmail(userEmail);
+    res.setHeader('Content-Type', 'application/json');
+    res.write(JSON.stringify(user || null));
+    res.end();
+    return;
+  }
+
   // ##########################################
   // PUT /users/:id : modify a user by id
   // match against (t.ex): /users/c7b6ee79-c89b-4e07-97e2-27cbcecfc072

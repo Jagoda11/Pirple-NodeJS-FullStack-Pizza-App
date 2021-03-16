@@ -21,16 +21,17 @@ e.on('get order', function (str) {
   cli.responders.getOrderById(str);
 });
 
-//adding help for practice ..remove the file after
-e.on('help', function (str) {
-  cli.responders.help();
+e.on('get user', function (str) {
+  cli.responders.getUserByEmail(str);
 });
 
-//adding stats for practice ..remove the file after
 e.on('list users', function (str) {
   cli.responders.listUsers(str);
 });
 
+e.on('help', function (str) {
+  cli.responders.help();
+});
 // Instantiate the cli module object
 const cli = { responders: {} };
 
@@ -49,6 +50,7 @@ cli.processInput = function (str) {
       'list users',
       'list orders',
       'get order',
+      'get user',
       'more user info',
       'list checks',
       'more check info',
