@@ -2,6 +2,8 @@ Homework Assignment #4
 
 - build a CLI interface that would allow the manager of the pizza place to:
 
+to start the CLI : 'nodemon cli/index.js' 
+
 1. View all the current menu items ✅
      run : 'list menu'
 
