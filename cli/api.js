@@ -39,7 +39,7 @@ async function getOrderById(orderId) {
 }
 
 async function getUserByEmail(email) {
-  const result = await axios.get(API_URL + '/users/byemail/+email', {
+  const result = await axios.get(API_URL + '/users/byemail/' + email, {
     headers: {
       authorization: config.apiToken,
     },
