@@ -72,7 +72,7 @@ function serverHandler(req, res) {
   }
 
   //get user by email
-  const reggMatch = req.url.match(/^\/user\/([^\/]+)$/i);
+  const reggMatch = req.url.match(/^\/users\/byemail\/([^\/]+)$/i);
   if (req.method === 'GET' && reggMatch) {
     const token = tokensDb.getToken(req.headers.authorization);
     if (token.admin !== true) {
