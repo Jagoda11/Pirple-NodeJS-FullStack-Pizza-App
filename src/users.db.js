@@ -15,8 +15,8 @@ function getUsers() {
   return allUsers;
 }
 
-function getUserByEmail(user) {
-  return allUsers.find((email) => {
+function getUserByEmail(email) {
+  return allUsers.find((user) => {
     return user.email === email;
   });
 }
