@@ -3,14 +3,21 @@ Homework Assignment #4
 - build a CLI interface that would allow the manager of the pizza place to:
 
 1. View all the current menu items ✅
+     run : 'list menu'
 
 2. View all the recent orders in the system (orders placed in the last 24 hours) ✅
+    run : 'list orders'
 
 3. Lookup the details of a specific order by order ID ✅
+  run : 'get order <ID>' 
+  //you can use 'get order 0'
 
-4. View all the users who have signed up in the last 24 hours
+4. View all the users who have signed up in the last 24 hours✅
+     run: 'list users'
 
-5. Lookup the details of a specific user by email address
+5. Lookup the details of a specific user by email address✅
+run; 'get user <EMAIL>'
+you can use : 'get user vigiho5448@trejni.com' 
 
 Homework Assignment #3
 
