@@ -1,4 +1,4 @@
 ### Get the menu items
 Get http://localhost:3000/menu HTTP/1.1
 content-type: application/json
-Authorization: n893jb0ukcqcbt6crb1xi6qinb4w71
+Authorization: n893jb0ukcqcbt6crb1xi6qinb4w7123
