@@ -19,7 +19,7 @@ to start the CLI : 'nodemon cli/index.js'
 
 5. Lookup the details of a specific user by email address✅
 run; 'get user <EMAIL>'
-you can use : 'get user vigiho5448@trejni.com' 
+you can use : 'get user vigiho5448@trejni.com' // temporary email
 
 Homework Assignment #3
 
