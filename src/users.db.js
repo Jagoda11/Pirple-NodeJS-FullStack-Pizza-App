@@ -1,7 +1,7 @@
 const allUsers = [
   {
     // user for testing purposes
-    name: 'Vigiho',
+    name: 'miniMe',
     hashedPassword:
       '5513f9608ffe88722143cd30af4b633b1a7b3bc69ebe0e6490b7d26ebf6f27d6',
     email: 'vigiho5448@trejni.com',
