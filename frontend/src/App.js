@@ -1,11 +1,11 @@
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import "./App.css";
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import './App.css';
 
-import Signup from "./components/Signup";
-import Login from "./components/Login";
-import Menu from "./components/Menu";
-import Checkout from "./components/Checkout";
-import CheckoutComplete from "./components/CheckoutComplete";
+import Signup from './components/Signup';
+import Login from './components/Login';
+import Menu from './components/Menu';
+import Checkout from './components/Checkout';
+import CheckoutComplete from './components/CheckoutComplete';
 
 function App() {
   return (
@@ -13,35 +13,25 @@ function App() {
       <div>
         <ul>
           <li>
-            <Link to="/">Signup</Link>
+            <Link to='/'>Signup</Link>
           </li>
           <li>
-            <Link to="/login">Login</Link>
+            <Link to='/login'>Login</Link>
           </li>
           <li>
-            <Link to="/menu">Menu</Link>
+            <Link to='/menu'>Menu</Link>
           </li>
         </ul>
 
         <hr />
 
-        <Switch>
-          <Route exact path="/">
-            <Signup />
-          </Route>
-          <Route path="/login">
-            <Login />
-          </Route>
-          <Route path="/menu">
-            <Menu />
-          </Route>
-          <Route path="/checkout">
-            <Checkout />
-          </Route>
-          <Route path="/checkout-complete">
-            <CheckoutComplete />
-          </Route>
-        </Switch>
+        <Routes>
+          <Route path='/' element={<Signup />} />
+          <Route path='/login' element={<Login />} />
+          <Route path='/menu' element={<Menu />} />
+          <Route path='/checkout' element={<Checkout />} />
+          <Route path='/checkout-complete' element={<CheckoutComplete />} />
+        </Routes>
       </div>
     </Router>
   );

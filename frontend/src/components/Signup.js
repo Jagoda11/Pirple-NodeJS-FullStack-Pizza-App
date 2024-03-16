@@ -1,18 +1,18 @@
-import { useState } from "react";
-import * as api from "../api";
-import { useHistory } from "react-router-dom";
+import { useState } from 'react';
+import * as api from '../api';
+import { useNavigate } from 'react-router-dom';
 
 function Signup() {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [streetAddress, setStreetAddress] = useState("");
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [streetAddress, setStreetAddress] = useState('');
 
-  let history = useHistory();
+  let navigate = useNavigate();
 
   const handleSubmit = (event) => {
     api.registerUser({ name, password, email, street_address: streetAddress });
-    history.push("/login");
+    navigate('/login');
   };
 
   return (
@@ -20,8 +20,8 @@ function Signup() {
       <label>
         Name:
         <input
-          name="name"
-          type="text"
+          name='name'
+          type='text'
           onChange={(e) => setName(e.target.value)}
         />
       </label>
@@ -30,8 +30,8 @@ function Signup() {
       <label>
         Email:
         <input
-          name="email"
-          type="text"
+          name='email'
+          type='text'
           onChange={(e) => setEmail(e.target.value)}
         />
       </label>
@@ -40,8 +40,8 @@ function Signup() {
       <label>
         Password:
         <input
-          name="password"
-          type="password"
+          name='password'
+          type='password'
           onChange={(e) => setPassword(e.target.value)}
         />
       </label>
@@ -50,18 +50,18 @@ function Signup() {
       <label>
         Street address:
         <input
-          name="street_address"
-          type="text"
+          name='street_address'
+          type='text'
           onChange={(e) => setStreetAddress(e.target.value)}
         />
       </label>
       <br />
 
       <input
-        type="submit"
-        value="Signup"
+        type='submit'
+        value='Signup'
         onClick={handleSubmit}
-        className="btn btn-primary"
+        className='btn btn-primary'
       />
     </>
   );

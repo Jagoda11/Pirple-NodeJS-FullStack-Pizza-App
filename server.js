@@ -19,52 +19,41 @@ function serverHandler(req, res) {
     return;
   }
 
-  if (req.method === 'GET' && req.url === '/') {
+  if (
+    req.url.startsWith('/users') ||
+    req.url.startsWith('/menu') ||
+    req.url.startsWith('/shopping-cart') ||
+    req.url.startsWith('/order') ||
+    req.url.startsWith('/cli')
+  ) {
+    if (req.url.startsWith('/users')) {
+      utils.log('routing to users handler');
+      users.serverHandler(req, res);
+      utils.log('Finished users handler');
+    } else if (req.url.startsWith('/menu')) {
+      menu.serverHandler(req, res);
+    } else if (req.url.startsWith('/shopping-cart')) {
+      shoppingCart.serverHandler(req, res);
+    } else if (req.url.startsWith('/order')) {
+      order.serverHandler(req, res);
+    } else if (req.url.startsWith('/cli')) {
+      cli.serverHandler(req, res);
+    }
+  } else if (req.method === 'GET') {
     respondWithFile(res, '/index.html');
-    return;
+  } else {
+    res.statusCode = 404;
+    res.write('Not found');
+    res.end();
   }
-
-  if (req.method === 'GET' && req.url.startsWith('/static')) {
-    respondWithFile(res, req.url);
-    return;
-  }
-
-  if (req.url.startsWith('/users')) {
-    utils.log('routing to users handler');
-    users.serverHandler(req, res);
-
-    utils.log('Finished users handler');
-    return;
-  }
-
-  if (req.url.startsWith('/menu')) {
-    menu.serverHandler(req, res);
-    return;
-  }
-
-  if (req.url.startsWith('/shopping-cart')) {
-    shoppingCart.serverHandler(req, res);
-    return;
-  }
-
-  if (req.url.startsWith('/order')) {
-    order.serverHandler(req, res);
-    return;
-  }
-  if (req.url.startsWith('/cli')) {
-    cli.serverHandler(req, res);
-    return;
-  }
-
-  res.statusCode = 404;
-  res.write('Not found');
-  res.end();
 }
 
 function respondWithFile(res, path) {
-  fs.readFile(__dirname + '/frontend/build' + path, (err, data) => {
+  const filePath = __dirname + '/frontend/build' + path;
+  utils.log(`📁 Responding with file: ${filePath}`);
+  fs.readFile(filePath, (err, data) => {
     if (err) {
-      console.log(err);
+      utils.log(`❌ Error reading file: ${err}`);
       return;
     }
     res.write(data);

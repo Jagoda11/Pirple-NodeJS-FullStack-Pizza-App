@@ -1,17 +1,17 @@
 import { useState } from 'react';
 import * as api from '../api';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 function Login() {
   const [email, setEmail] = useState('vigiho5448@trejni.com');
   const [password, setPassword] = useState('gooogle');
 
-  let history = useHistory();
+  let navigate = useNavigate();
 
   const handleSubmit = async () => {
     const token = await api.login(email, password);
     localStorage.setItem('token', token);
-    history.push('/menu');
+    navigate('/menu');
   };
 
   return (
