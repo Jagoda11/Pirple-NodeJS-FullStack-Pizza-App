@@ -1,19 +1,19 @@
 {
-  "name": "API-Pizza-2",
+  "name": "api-pizza-2",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "echo '🚀 Starting app...' && nodemon index.js",
+    "test": "echo '✅ Running tests... Error: no test specified' && exit 1"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "axios": "^0.21.1",
+    "axios": "^1.6.8",
     "mailgun-js": "^0.22.0",
-    "stripe": "^8.135.0",
-    "uuid": "^8.3.2"
+    "stripe": "^14.21.0",
+    "uuid": "^9.0.1"
   }
 }

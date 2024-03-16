@@ -1,27 +1,27 @@
-const axios = require("axios");
+const axios = require('axios');
 
-const URL = "http://localhost:3000";
-const TEST_EMAIL = "vigiho5448@trejni.com";
-const TEST_PASSWORD = "gooogle";
+const URL = 'http://localhost:3000';
+const TEST_EMAIL = 'vigiho5448@trejni.com';
+const TEST_PASSWORD = 'gooogle';
 
 async function login() {
-  console.log("Login...");
+  console.log('🔑 Login...');
   const result = await axios.post(
-    URL + "/users/login",
+    URL + '/users/login',
     JSON.stringify({
       email: TEST_EMAIL,
       password: TEST_PASSWORD,
     })
   );
 
-  console.log("Token: " + result.data);
+  console.log('🔐 Token: ' + result.data);
   return result.data; // token
 }
 
 async function shop(token, itemId) {
-  console.log("Shop...");
+  console.log('🛒 Shop...');
   const result = await axios.post(
-    URL + "/shopping-cart/add",
+    URL + '/shopping-cart/add',
     JSON.stringify({ itemId }),
     {
       headers: { Authorization: token },
@@ -32,20 +32,20 @@ async function shop(token, itemId) {
 }
 
 async function checkout(token) {
-  console.log("Checkout...");
+  console.log('💳 Checkout...');
   try {
     const result = await axios.post(
-      URL + "/order/checkout",
-      JSON.stringify({ number: "4242424242424242" }),
+      URL + '/order/checkout',
+      JSON.stringify({ number: '4242424242424242' }),
       {
         headers: { Authorization: token },
       }
     );
-    console.log(result.data);
+    console.log('📦 Order Details: ' + result.data);
     return result.data;
   } catch (error) {
-    console.log(error.response.status);
-    console.log(error.response.data);
+    console.log('⚠️ Error Status: ' + error.response.status);
+    console.log('🚫 Error Data: ' + error.response.data);
   }
 }
 
@@ -55,8 +55,8 @@ async function run() {
   await shop(token, 2);
   await shop(token, 3);
   const shoppingCart = await shop(token, 2);
-  console.log(shoppingCart);
+  console.log('🛍️ Shopping Cart: ' + shoppingCart);
   await checkout(token);
 }
 
-run().catch(console.error);
+run().catch((error) => console.error('🔥 Error: ', error));

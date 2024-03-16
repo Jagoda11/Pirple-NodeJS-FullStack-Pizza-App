@@ -1,29 +1,29 @@
-Homework Assignment #4
+# Homework Assignment #4
 
-- build a CLI interface that would allow the manager of the pizza place to:
+- Build a CLI interface that would allow the manager of the pizza place to:
 
-to start the CLI : 'nodemon cli/index.js' 
+To start the CLI: `nodemon cli/index.js` 🚀
 
-1. View all the current menu items ✅
-     run : 'list menu'
+1. View all the current menu items ✅  
+   Run: `list menu`
 
-2. View all the recent orders in the system (orders placed in the last 24 hours) ✅
-    run : 'list orders'
+2. View all the recent orders in the system (orders placed in the last 24 hours) ✅  
+   Run: `list orders`
 
-3. Lookup the details of a specific order by order ID ✅
-  run : 'get order <ID>' 
-  //you can use 'get order 0'
+3. Lookup the details of a specific order by order ID ✅  
+   Run: `get order <ID>`  
+   // You can use `get order 0`
 
-4. View all the users who have signed up in the last 24 hours✅
-     run: 'list users'
+4. View all the users who have signed up in the last 24 hours ✅  
+   Run: `list users`
 
-5. Lookup the details of a specific user by email address✅
-run; 'get user <EMAIL>'
-you can use : 'get user vigiho5448@trejni.com' // temporary email
+5. Lookup the details of a specific user by email address ✅  
+   Run: `get user <EMAIL>`  
+   You can use: `get user vigiho5448@trejni.com` // temporary email
 
-Homework Assignment #3
+# Homework Assignment #3
 
-- in order to test run `node index.js` and browse to http://localhost:3333/
+- In order to test run `node index.js` and browse to http://localhost:3333/ 🌐
 
 Details (Scenario):
 
@@ -37,27 +37,27 @@ It is time to build a simple frontend for the Pizza-Delivery API you created in 
 
 4. Place an order (with fake credit card credentials), and receive an email receipt ✅
 
-Homework Assignment #2
+# Homework Assignment #2
 
-### User login
+### User login 🧑‍💼
 
 #### POST /users/login
 
 `body: {email: String, password: String}`
 
-### User logout
+### User logout 🔒
 
 #### POST /users/logout
 
 `header: authorization`
 
-### Add user
+### Add user 🆕
 
 #### POST /users
 
 `body: {email: String, name: String, password: String, street_address: String}`
 
-### Update user
+### Update user 🔧
 
 #### PUT /users/:id
 
@@ -65,35 +65,35 @@ Homework Assignment #2
 
 `body: {email: String, name: String, password: String, street_address: String}`
 
-### Delete user
+### Delete user ❌
 
 #### DELETE /users/:id
 
 `param: id`
 
-### Get menu items
+### Get menu items 📜
 
 #### GET /menu
 
 `header: authorization`
 
-### Add item to the shopping cart
+### Add item to the shopping cart 🛒
 
 #### POST /shopping-cart/add
 
-`header: authorization`
+`header: authorization`  
 `body: {itemId: String}`
 
-### checkout an order
+### Checkout an order 💳
 
 #### POST /order/checkout
 
-`header: authorization`
+`header: authorization`  
 `body: {cardNumber: String}`
 
 Details (Scenario):
 
-You are building the API for a pizza-delivery company. Don't worry about a frontend, just build the API. Here's the spec from your project manager:
+You are building the API for a pizza-delivery company. Here's the spec from your project manager:
 
 1. New users can be created, their information can be edited, and they can be deleted. We should store their name, email address, and street address. ✅ (remaining: store users on desk instead of memory)
 
@@ -101,14 +101,18 @@ You are building the API for a pizza-delivery company. Don't worry about a front
 
 3. When a user is logged in, they should be able to GET all the possible menu items (these items can be hardcoded into the system). ✅
 
-4. A logged-in user should be able to fill a shopping cart with menu items ✅
+4. A logged-in user should be able to fill a shopping cart with menu items. ✅
 
-5. A logged-in user should be able to create an order. You should integrate with the Sandbox of Stripe.com to accept their payment. Note: Use the stripe sandbox for your testing. Follow this link and click on the "tokens" tab to see the fake tokens you can use server-side to confirm the integration is working: https://stripe.com/docs/testing#cards, https://stripe.com/docs/api/charges/ 🏃🏃
+5. **Create an Order with Stripe Integration** 🏃🏃  
+   A logged-in user should be able to create an order. Integrate with the Stripe.com Sandbox to process payments. Utilize Stripe's sandbox for testing purposes. Explore the [Stripe testing documentation](https://stripe.com/docs/testing#cards) and the [charges API](https://stripe.com/docs/api/charges/) to understand how to use fake tokens for server-side testing.
 
-6. When an order is placed, you should email the user a receipt. You should integrate with the sandbox of Mailgun.com for this. Note: Every Mailgun account comes with a sandbox email account domain (whatever@sandbox123.mailgun.org) that you can send from by default. So, there's no need to setup any DNS for your domain for this task https://documentation.mailgun.com/en/latest/faqs.html#how-do-i-pick-a-domain-name-for-my-mailgun-account 🏃🏃
+6. **Email Receipt with Mailgun Integration** 🏃🏃  
+   Once an order is placed, email the user a receipt. This should be done by integrating with the Mailgun.com sandbox. Each Mailgun account has a sandbox domain (like `whatever@sandbox123.mailgun.org`) that allows sending emails without DNS setup. For more details, visit the [Mailgun FAQ](https://documentation.mailgun.com/en/latest/faqs.html#how-do-i-pick-a-domain-name-for-my-mailgun-account).
 
-Important Note: If you use external libraries (NPM) to integrate with Stripe or Mailgun, you will not pass this assignment. You must write your API calls from scratch. Look up the "Curl" documentation for both APIs so you can figure out how to craft your API calls.
+
+Important Note: If you use external libraries (NPM) to integrate with Stripe or Mailgun, you will not pass this assignment. You must write your API calls from scratch.
 
 This is an open-ended assignment. You may take any direction you'd like to go with it, as long as your project includes the requirements. It can include anything else you wish as well.
 
 And please: Don't forget to document how a client should interact with the API you create!
+
