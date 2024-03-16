@@ -39,9 +39,9 @@ It is time to build a simple frontend for the Pizza-Delivery API you created in 
 
 # Homework Assignment #2
 
-### User login 🧑‍💼
+## User login 🧑‍💼
 
-#### POST /users/login
+### POST /users/login
 
 `body: {email: String, password: String}`
 
