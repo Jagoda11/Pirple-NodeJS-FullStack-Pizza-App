@@ -1,5 +1,8 @@
 #  Pirple NodeJS FullStack Pizza App🍕
 
+![GitHub Issues](https://img.shields.io/github/issues/Jagoda11/Pirple-NodeJS-FullStack-Pizza-App?color=red)
+![GitHub Last Commit](https://img.shields.io/github/last-commit/Jagoda11/Pirple-NodeJS-FullStack-Pizza-App?color=green)
+
 # Homework Assignment #4
 
 - Build a CLI interface that would allow the manager of the pizza place to:
