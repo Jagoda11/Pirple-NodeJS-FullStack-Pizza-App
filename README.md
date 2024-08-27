@@ -1,9 +1,10 @@
-#  Pirple NodeJS FullStack Pizza App🍕
+# Pirple NodeJS FullStack Pizza App🍕
 
-![GitHub Issues](https://img.shields.io/github/issues/Jagoda11/Pirple-NodeJS-FullStack-Pizza-App?color=red)
+![GitHub Issues](https://img.shields.io/github/issues/Jagoda11/Pirple-NodeJS-FullStack-Pizza-App?color=pink)
 ![GitHub Last Commit](https://img.shields.io/github/last-commit/Jagoda11/Pirple-NodeJS-FullStack-Pizza-App?color=green)
+![Build Status](https://github.com/Jagoda11/Pirple-NodeJS-FullStack-Pizza-App/actions/workflows/update-and-scan.yml/badge.svg?branch=master)
 
-# Homework Assignment #4
+## Homework Assignment #4
 
 - Build a CLI interface that would allow the manager of the pizza place to:
 
@@ -26,9 +27,9 @@ To start the CLI: `nodemon cli/index.js` 🚀
    Run: `get user <EMAIL>`  
    You can use: `get user vigiho5448@trejni.com` // temporary email
 
-# Homework Assignment #3
+## Homework Assignment #3
 
-- In order to test run `node index.js` and browse to http://localhost:3333/ 🌐
+- In order to test run `node index.js` and browse to <http://localhost:3333/> 🌐
 
 Details (Scenario):
 
@@ -42,7 +43,7 @@ It is time to build a simple frontend for the Pizza-Delivery API you created in 
 
 4. Place an order (with fake credit card credentials), and receive an email receipt ✅
 
-# Homework Assignment #2
+## Homework Assignment #2
 
 ## User login 🧑‍💼
 
@@ -114,10 +115,18 @@ You are building the API for a pizza-delivery company. Here's the spec from your
 6. **Email Receipt with Mailgun Integration** 🏃🏃  
    Once an order is placed, email the user a receipt. This should be done by integrating with the Mailgun.com sandbox. Each Mailgun account has a sandbox domain (like `whatever@sandbox123.mailgun.org`) that allows sending emails without DNS setup. For more details, visit the [Mailgun FAQ](https://documentation.mailgun.com/en/latest/faqs.html#how-do-i-pick-a-domain-name-for-my-mailgun-account).
 
-
 Important Note: If you use external libraries (NPM) to integrate with Stripe or Mailgun, you will not pass this assignment. You must write your API calls from scratch.
 
 This is an open-ended assignment. You may take any direction you'd like to go with it, as long as your project includes the requirements. It can include anything else you wish as well.
 
 And please: Don't forget to document how a client should interact with the API you create!
 
+## Continuous Integration
+
+This project now includes a **GitHub Actions** workflow that automatically updates npm dependencies and performs a vulnerability scan. The workflow runs daily at 2 AM UTC and whenever changes are pushed to the `master` branch. It ensures that the project stays up-to-date.
+
+The workflow performs the following tasks:
+
+- Updates all npm dependencies, except for ESLint, which is pinned to a specific version.
+- Runs a vulnerability scan using the Debricked CLI.
+- Automatically commits and pushes changes to the repository if dependencies are updated.
