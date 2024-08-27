@@ -15,8 +15,5 @@
     "mailgun-js": "^0.6.7",
     "stripe": "^16.8.0",
     "uuid": "^10.0.0"
-  },
-  "devDependencies": {
-    "eslint": "^8.56.0"
   }
 }

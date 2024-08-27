@@ -25,9 +25,7 @@ jobs:
         run: npm install
 
       - name: ⬆️ Update all packages except ESLint
-        run: |
-          npm update --legacy-peer-deps
-          npm install eslint@8.56.0 --save-dev
+        run: npm update --legacy-peer-deps
 
       - name: 🎭 Mask Debricked credentials
         run: echo "::add-mask::${{ secrets.DEBRICKED_TOKEN }}"
