@@ -24,7 +24,7 @@ jobs:
       - name: 📦 Install dependencies
         run: npm install
 
-      - name: ⬆️ Update all packages except ESLint
+      - name: ⬆️ Update all packages
         run: npm update --legacy-peer-deps
 
       - name: 🎭 Mask Debricked credentials
