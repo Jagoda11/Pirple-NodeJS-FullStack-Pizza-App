@@ -6,7 +6,7 @@ on:
   workflow_dispatch: # Allows manual triggering
   push:
     branches:
-      - master # Runs on pushes to the master branch
+      - master
 
 jobs:
   update-and-scan:
@@ -19,12 +19,21 @@ jobs:
       - name: 🔧 Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20' # Using Node.js version 20
+          node-version: '20'
+
+      - name: 🗑️ Remove package-lock.json
+        run: rm -f package-lock.json
+
+      - name: 📦 Install npm-check-updates
+        run: npm install -g npm-check-updates
+
+      - name: ⬆️ Update dependencies in package.json
+        run: ncu -u
 
       - name: 📦 Install dependencies
         run: npm install
 
-      - name: ⬆️ Update all packages
+      - name: 📦 Update dependencies with legacy peer deps
         run: npm update --legacy-peer-deps
 
       - name: 🎭 Mask Debricked credentials
@@ -45,7 +54,7 @@ jobs:
           git config --local user.name "Debugging Duck 🦆"
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git add .
-          git diff-index --quiet HEAD || git commit -m "⬆️ update all npm dependencies except ESLint ⬆️"
+          git diff-index --quiet HEAD || git commit -m "⬆️ update all npm dependencies⬆️"
 
       - name: 🚀 Push changes
         if: success()
