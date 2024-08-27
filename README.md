@@ -121,12 +121,12 @@ This is an open-ended assignment. You may take any direction you'd like to go wi
 
 And please: Don't forget to document how a client should interact with the API you create!
 
-## Continuous Integration
+## Continuous Integration 🚴
 
-This project now includes a **GitHub Actions** workflow that automatically updates npm dependencies and performs a vulnerability scan. The workflow runs daily at 2 AM UTC and whenever changes are pushed to the `master` branch. It ensures that the project stays up-to-date.
+This project now includes a **GitHub Actions** workflow that automatically updates npm dependencies and performs a vulnerability scan🧐. The workflow runs daily at 2 AM UTC and whenever changes are pushed to the `master` branch. It ensures that the project stays up-to-date.
 
 The workflow performs the following tasks:
 
-- Updates all npm dependencies, except for ESLint, which is pinned to a specific version.
-- Runs a vulnerability scan using the Debricked CLI.
-- Automatically commits and pushes changes to the repository if dependencies are updated.
+- Updates all ⬆️ npm dependencies.
+- Runs a vulnerability scan using the Debricked CLI.🚨
+- Automatically commits and pushes 🚀changes to the repository if dependencies are updated.
