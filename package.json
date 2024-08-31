@@ -11,7 +11,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "axios": "^1.7.5",
+    "axios": "^1.7.6",
     "mailgun-js": "^0.22.0",
     "stripe": "^16.9.0",
     "uuid": "^10.0.0"
