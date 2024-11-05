@@ -4,9 +4,6 @@ on:
   schedule:
     - cron: '0 2 * * 5'
   workflow_dispatch: # Allows manual triggering
-  push:
-    branches:
-      - master
 
 jobs:
   update-and-scan:
