@@ -1,0 +1,63 @@
+name: 🚀 Frontend Dependency Update and Vulnerability Scan
+
+on:
+  schedule:
+    - cron: '0 0 1 * *'
+  workflow_dispatch:
+
+jobs:
+  update-and-scan-frontend:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 🛠️ Checkout code
+        uses: actions/checkout@v4
+
+      - name: 🔧 Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: 🗑️ Remove package-lock.json
+        run: rm -f package-lock.json
+        working-directory: frontend
+
+      - name: 📦 Install npm-check-updates
+        run: npm install -g npm-check-updates
+
+      - name: ⬆️ Update dependencies in package.json
+        run: ncu -u
+        working-directory: frontend
+
+      - name: 📦 Install dependencies
+        run: npm install
+        working-directory: frontend
+
+      - name: 📦 Update dependencies with legacy peer deps
+        run: npm update --legacy-peer-deps
+        working-directory: frontend
+
+      - name: 🎭 Mask Debricked credentials
+        run: echo "::add-mask::${{ secrets.DEBRICKED_TOKEN }}"
+
+      - name: Install Debricked CLI
+        run: |
+          curl -L https://github.com/debricked/cli/releases/latest/download/cli_linux_x86_64.tar.gz | tar -xz debricked
+          sudo mv debricked /usr/local/bin/debricked
+
+      - name: 🛡️ Debricked Vulnerability Scan
+        run: |
+          debricked scan -t ${{ secrets.DEBRICKED_TOKEN }} -r ${{ github.repository }} -c ${{ github.sha }}
+        working-directory: frontend
+
+      - name: 📝 Commit changes
+        if: success()
+        run: |
+          git config --local user.name "Debugging Duck 🦆"
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git add frontend/package.json frontend/package-lock.json
+          git diff-index --quiet HEAD || git commit -m "⬆️ update all frontend npm dependencies⬆️"
+
+      - name: 🚀 Push changes
+        if: success()
+        run: git push
